@@ -1,6 +1,5 @@
 const fs = require("fs").promises;
 const path = require("path");
-const { getMaxListeners } = require("process");
 const uniqid = require("uniqid");
 
 const contactsPath = path.resolve("./db/contacts.json");
@@ -45,9 +44,8 @@ async function removeContact(contactId) {
     }
 }
 
-// функція addContact додає у запис про новий контакт у файл і присвоює йому id за допомогою бібліотеки uniqid
+// функція addContact додає у файл запис про новий контакт і присвоює йому id за допомогою бібліотеки uniqid
 async function addContact(name, email, phone) {
-
     try {
         const data = await fs.readFile(contactsPath, "utf-8");
         const updateData = [
